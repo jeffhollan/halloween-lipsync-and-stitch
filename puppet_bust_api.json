@@ -1,0 +1,128 @@
+{
+  "3": {
+    "inputs": {
+      "image": "frame_0004.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "6": {
+    "inputs": {
+      "rotate_pitch": 0,
+      "rotate_yaw": 0,
+      "rotate_roll": 0,
+      "blink": 0,
+      "eyebrow": 0,
+      "wink": 0,
+      "pupil_x": -5,
+      "pupil_y": 0,
+      "aaa": 0,
+      "eee": 0,
+      "woo": 0,
+      "smile": 0,
+      "src_ratio": 1,
+      "sample_ratio": 1,
+      "sample_parts": "OnlyExpression",
+      "crop_factor": 1.7000000000000002,
+      "src_image": [
+        "3",
+        0
+      ]
+    },
+    "class_type": "ExpressionEditor",
+    "_meta": {
+      "title": "Expression Editor (PHM)"
+    }
+  },
+  "7": {
+    "inputs": {
+      "retargeting_eyes": 0.1,
+      "retargeting_mouth": 0.5,
+      "crop_factor": 1.7000000000000002,
+      "turn_on": "1 = 1:10\n2 = 5:10\n0 = 2:50\n1 = 2:0",
+      "tracking_src_vid": "1 = 1:10\n2 = 5:10\n0 = 2:50\n1 = 2:0",
+      "animate_without_vid": false,
+      "command": "1 = 1:10\n2 = 5:10\n0 = 2:50\n1 = 2:0",
+      "motion_link": [
+        "8",
+        1
+      ],
+      "driving_images": [
+        "9",
+        0
+      ]
+    },
+    "class_type": "AdvancedLivePortrait",
+    "_meta": {
+      "title": "Advanced Live Portrait (PHM)"
+    }
+  },
+  "8": {
+    "inputs": {
+      "rotate_pitch": 0,
+      "rotate_yaw": 0,
+      "rotate_roll": 0,
+      "blink": 0,
+      "eyebrow": 0,
+      "wink": 0,
+      "pupil_x": 5,
+      "pupil_y": 0,
+      "aaa": 0,
+      "eee": 0,
+      "woo": 0,
+      "smile": 0,
+      "src_ratio": 1,
+      "sample_ratio": 1,
+      "sample_parts": "OnlyExpression",
+      "crop_factor": 1.7,
+      "motion_link": [
+        "6",
+        1
+      ]
+    },
+    "class_type": "ExpressionEditor",
+    "_meta": {
+      "title": "Expression Editor (PHM)"
+    }
+  },
+  "9": {
+    "inputs": {
+      "video": "thriller_test.mkv",
+      "force_rate": 0,
+      "custom_width": 0,
+      "custom_height": 0,
+      "frame_load_cap": 0,
+      "skip_first_frames": 0,
+      "select_every_nth": 2,
+      "format": "AnimateDiff"
+    },
+    "class_type": "VHS_LoadVideo",
+    "_meta": {
+      "title": "Load Video (Upload) 🎥🅥🅗🅢"
+    }
+  },
+  "10": {
+    "inputs": {
+      "frame_rate": 15,
+      "loop_count": 0,
+      "filename_prefix": "AdvancedLivePortrait",
+      "format": "video/h264-mp4",
+      "pix_fmt": "yuv420p",
+      "crf": 19,
+      "save_metadata": true,
+      "trim_to_audio": false,
+      "pingpong": false,
+      "save_output": true,
+      "images": [
+        "7",
+        0
+      ]
+    },
+    "class_type": "VHS_VideoCombine",
+    "_meta": {
+      "title": "Video Combine 🎥🅥🅗🅢"
+    }
+  }
+}
