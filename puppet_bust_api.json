@@ -1,7 +1,7 @@
 {
   "3": {
     "inputs": {
-      "image": "frame_0004.png"
+      "image": "frame_0995.png"
     },
     "class_type": "LoadImage",
     "_meta": {
@@ -16,7 +16,7 @@
       "blink": 0,
       "eyebrow": 0,
       "wink": 0,
-      "pupil_x": -5,
+      "pupil_x": -10,
       "pupil_y": 0,
       "aaa": 0,
       "eee": 0,
@@ -38,7 +38,7 @@
   },
   "7": {
     "inputs": {
-      "retargeting_eyes": 0.1,
+      "retargeting_eyes": 0,
       "retargeting_mouth": 0.5,
       "crop_factor": 1.7000000000000002,
       "turn_on": "1 = 1:10\n2 = 5:10\n0 = 2:50\n1 = 2:0",
@@ -67,7 +67,7 @@
       "blink": 0,
       "eyebrow": 0,
       "wink": 0,
-      "pupil_x": 5,
+      "pupil_x": 10,
       "pupil_y": 0,
       "aaa": 0,
       "eee": 0,
@@ -89,7 +89,7 @@
   },
   "9": {
     "inputs": {
-      "video": "thriller_test.mkv",
+      "video": "Kyla_Thriller.mp4",
       "force_rate": 0,
       "custom_width": 0,
       "custom_height": 0,

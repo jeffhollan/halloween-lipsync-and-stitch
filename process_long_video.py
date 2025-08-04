@@ -3,6 +3,12 @@ import requests
 import math
 import subprocess
 import time
+import os
+from dotenv import load_dotenv
+from stitch_videos import stitch_videos
+
+# Load environment variables
+load_dotenv()
 
 # ComfyUI API endpoints (adjust if not localhost)
 comfy_prompt_url = 'http://127.0.0.1:8188/prompt'
@@ -12,8 +18,17 @@ comfy_history_url = 'http://127.0.0.1:8188/history'
 with open('puppet_bust_api.json', 'r') as f:
     workflow = json.load(f)
 
-# Get video path directly from workflow (it's a full path in this case)
-video_path = '/home/jeffhollan/comfy/ComfyUI/scripts/thriller_test.mkv'  # VHS_LoadVideo node ID '9'
+# Get video path from environment variable
+video_path = os.getenv('VIDEO_PATH')
+if not video_path:
+    raise ValueError("VIDEO_PATH not found in .env file")
+
+# Update the reference image in the workflow from environment variable
+reference_image = os.getenv('REFERENCE_IMAGE')
+if reference_image:
+    workflow['3']['inputs']['image'] = reference_image
+else:
+    print("Warning: REFERENCE_IMAGE not found in .env file, using default from JSON")
 
 # Use ffprobe to get video info (requires FFmpeg installed)
 def get_video_info(path):
@@ -180,3 +195,18 @@ for chunk_id in range(num_chunks):
         print(e)
         print("Likely crash—check ComfyUI console. Skipping to next chunk.")
         # Continue or break as needed
+
+print("All chunks processed. Starting video stitching...")
+
+# Extract the base name from the video path for the final output
+base_name = os.path.splitext(os.path.basename(video_path))[0]
+output_dir = os.getenv('OUTPUT_DIR', '/home/jeffhollan/comfy/ComfyUI/output/')
+final_output_path = os.path.join(output_dir, f'{base_name}_combined.mp4')
+
+# Stitch all the chunks together
+try:
+    final_video = stitch_videos(video_path, final_output_path, add_audio=True)
+    print(f"Video processing complete! Final output: {final_video}")
+except Exception as e:
+    print(f"Error during video stitching: {e}")
+    print("Individual chunks are still available in the output directory.")

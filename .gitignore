@@ -2,3 +2,8 @@
 thriller_test.mkv
 puppet_bust.json
 puppet_bust.json:Zone.Identifier
+*.mkv
+*.mp4
+*.mp3
+*.avi
+__pycache__/
